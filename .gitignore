@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Environment & Private User Data
+.env
+.env.local
+telegram_users_db.json
+telegram_users_table.csv
+telegram_bot_settings.json
+
+# Local scripts and temporary files
+*.bat
+*.cmd
+*.ps1
+*.txt
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
