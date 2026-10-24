@@ -15,6 +15,9 @@ telegram_bot_settings.json
 *.ps1
 *.txt
 *.log
+*.jpg
+*.jpeg
+*.png
 
 # OS generated files
 .DS_Store
