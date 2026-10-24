@@ -1,0 +1,605 @@
+[
+  {
+    "name": "CUPSIZE",
+    "cat": "rock",
+    "base": 1600000,
+    "img": "https://i1.sndcdn.com/artworks-YtTbHD0C8KQ84nem-wEozKg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "448 000",
+    "scPlays": "3 360 000"
+  },
+  {
+    "name": "Темный Принц",
+    "cat": "trap_ru",
+    "base": 1400000,
+    "img": "https://i1.sndcdn.com/artworks-23rgYfpvqb8ZB8nx-NhMkeA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "392 000",
+    "scPlays": "2 940 000"
+  },
+  {
+    "name": "Kai Angel",
+    "cat": "trap_ru",
+    "base": 1300000,
+    "img": "https://i1.sndcdn.com/artworks-oyhPyT8tUH8eRpwF-ezDc1A-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "364 000",
+    "scPlays": "2 730 000"
+  },
+  {
+    "name": "madk1d",
+    "cat": "trap_ru",
+    "base": 1200000,
+    "img": "https://i1.sndcdn.com/artworks-kXOQozMfAIWh3Ee4-HujXpw-t500x500.png",
+    "trackCount": 35,
+    "scFollowers": "336 000",
+    "scPlays": "2 520 000"
+  },
+  {
+    "name": "Платина",
+    "cat": "trap_ru",
+    "base": 2200000,
+    "img": "https://i1.sndcdn.com/artworks-N6jBUWqlQNz5rLvO-PvDSYg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "616 000",
+    "scPlays": "4 620 000"
+  },
+  {
+    "name": "Heronwater",
+    "cat": "trap_ru",
+    "base": 1500000,
+    "img": "https://i1.sndcdn.com/artworks-euxKqvjNdCpnr7yD-CprLug-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "420 000",
+    "scPlays": "3 150 000"
+  },
+  {
+    "name": "9mice",
+    "cat": "trap_ru",
+    "base": 1100000,
+    "img": "https://i1.sndcdn.com/artworks-VmRNkca7zD8M-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "308 000",
+    "scPlays": "2 310 000"
+  },
+  {
+    "name": "Toxi$",
+    "cat": "trap_ru",
+    "base": 2500000,
+    "img": "https://i1.sndcdn.com/artworks-aTBxxAxARO0F7kZd-PlLamA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "700 000",
+    "scPlays": "5 250 000"
+  },
+  {
+    "name": "Scally Milano",
+    "cat": "trap_ru",
+    "base": 2000000,
+    "img": "https://i1.sndcdn.com/artworks-AW7uMjGSfOdhyE3Y-yJYjwg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "560 000",
+    "scPlays": "4 200 000"
+  },
+  {
+    "name": "Bushido Zho",
+    "cat": "trap_ru",
+    "base": 2700000,
+    "img": "https://i1.sndcdn.com/artworks-X68sxkcVqDHxgWYr-uwwcpA-t500x500.png",
+    "trackCount": 35,
+    "scFollowers": "756 000",
+    "scPlays": "5 670 000"
+  },
+  {
+    "name": "Uglystephan",
+    "cat": "trap_ru",
+    "base": 1800000,
+    "img": "https://i1.sndcdn.com/artworks-rJzxzDQ6oXzcX7fx-5cIx5Q-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "504 000",
+    "scPlays": "3 780 000"
+  },
+  {
+    "name": "Saluki",
+    "cat": "trap_ru",
+    "base": 2100000,
+    "img": "https://i1.sndcdn.com/artworks-97dMX7LqxDis-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "588 000",
+    "scPlays": "4 410 000"
+  },
+  {
+    "name": "Voskresenskii",
+    "cat": "trap_ru",
+    "base": 1400000,
+    "img": "https://i1.sndcdn.com/artworks-gCJ8ztiEARledzj9-VXsdXg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "392 000",
+    "scPlays": "2 940 000"
+  },
+  {
+    "name": "GONE.Fludd",
+    "cat": "trap_ru",
+    "base": 2700000,
+    "img": "https://i1.sndcdn.com/artworks-xRdFHKeslY8efRQ3-jvEFYg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "756 000",
+    "scPlays": "5 670 000"
+  },
+  {
+    "name": "unki",
+    "cat": "trap_ru",
+    "base": 1300000,
+    "img": "https://i1.sndcdn.com/artworks-BgpggDaOKyT7pFSm-BepB0w-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "364 000",
+    "scPlays": "2 730 000"
+  },
+  {
+    "name": "Pepel Nahudi",
+    "cat": "trap_ru",
+    "base": 1500000,
+    "img": "https://i1.sndcdn.com/artworks-ma05zVg0J2z3LxtG-eu6Fwg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "420 000",
+    "scPlays": "3 150 000"
+  },
+  {
+    "name": "ALBLAK 52",
+    "cat": "52_melon",
+    "base": 2000000,
+    "img": "https://i1.sndcdn.com/artworks-9lWpgBWpgGtLtso1-4VJjxA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "560 000",
+    "scPlays": "4 200 000"
+  },
+  {
+    "name": "Friendly Thug 52",
+    "cat": "52_melon",
+    "base": 2200000,
+    "img": "https://i1.sndcdn.com/artworks-Qu0vmfIq5cJ8yEdN-NPFx6A-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "616 000",
+    "scPlays": "4 620 000"
+  },
+  {
+    "name": "Obladaet",
+    "cat": "trap_ru",
+    "base": 2400000,
+    "img": "https://i1.sndcdn.com/artworks-CeliCdfUT8x7u01W-FNFxzQ-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "672 000",
+    "scPlays": "5 040 000"
+  },
+  {
+    "name": "Markul",
+    "cat": "trap_ru",
+    "base": 2900000,
+    "img": "https://i1.sndcdn.com/artworks-000424060653-2rd5ve-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "812 000",
+    "scPlays": "6 090 000"
+  },
+  {
+    "name": "SEEMEE",
+    "cat": "52_melon",
+    "base": 1700000,
+    "img": "https://i1.sndcdn.com/artworks-sZ6zO6FCmoo50XPF-bcgkLQ-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "476 000",
+    "scPlays": "3 570 000"
+  },
+  {
+    "name": "163ONMYNECK",
+    "cat": "52_melon",
+    "base": 1500000,
+    "img": "https://i1.sndcdn.com/artworks-N3EkGPCSkIBsz7kY-GUyW4w-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "420 000",
+    "scPlays": "3 150 000"
+  },
+  {
+    "name": "MAYOT",
+    "cat": "52_melon",
+    "base": 2400000,
+    "img": "https://i1.sndcdn.com/artworks-uhbrN9sdgqJ8-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "672 000",
+    "scPlays": "5 040 000"
+  },
+  {
+    "name": "OG Buda",
+    "cat": "52_melon",
+    "base": 3100000,
+    "img": "https://i1.sndcdn.com/artworks-000644643541-o08tfn-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "868 000",
+    "scPlays": "6 510 000"
+  },
+  {
+    "name": "три дня дождя",
+    "cat": "rock",
+    "base": 3500000,
+    "img": "https://i1.sndcdn.com/artworks-omAnbaoVyB9AtCjH-K3UHdA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "980 000",
+    "scPlays": "7 350 000"
+  },
+  {
+    "name": "Кишлак",
+    "cat": "rock",
+    "base": 1900000,
+    "img": "https://i1.sndcdn.com/artworks-aCMX16R2qZhEE0M6-mJ0zKg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "532 000",
+    "scPlays": "3 990 000"
+  },
+  {
+    "name": "YUNGWAY",
+    "cat": "52_melon",
+    "base": 1000000,
+    "img": "https://i1.sndcdn.com/artworks-1Bz1a5FZisAw0spL-xJ89aQ-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "280 000",
+    "scPlays": "2 100 000"
+  },
+  {
+    "name": "Glocki52",
+    "cat": "52_melon",
+    "base": 950000,
+    "img": "https://i1.sndcdn.com/artworks-r7HZjem2pLFpwKqS-lJ6Orw-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "266 000",
+    "scPlays": "1 995 000"
+  },
+  {
+    "name": "shadowraze",
+    "cat": "rock",
+    "base": 1900000,
+    "img": "https://i1.sndcdn.com/artworks-7LcqRw7d5XPY0cde-sgJenQ-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "532 000",
+    "scPlays": "3 990 000"
+  },
+  {
+    "name": "Серега Пират",
+    "cat": "rock",
+    "base": 2100000,
+    "img": "https://i1.sndcdn.com/artworks-HOm1rjNe7LHXcpTx-e6lBcQ-t500x500.png",
+    "trackCount": 35,
+    "scFollowers": "588 000",
+    "scPlays": "4 410 000"
+  },
+  {
+    "name": "zxcursed",
+    "cat": "rock",
+    "base": 1400000,
+    "img": "https://i1.sndcdn.com/artworks-nYkIHpMjOe4fnjF6-pMQKyw-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "392 000",
+    "scPlays": "2 940 000"
+  },
+  {
+    "name": "Полматери",
+    "cat": "rock",
+    "base": 1500000,
+    "img": "https://i1.sndcdn.com/artworks-Bkk5l6gb0QVELzm6-a5xoLg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "420 000",
+    "scPlays": "3 150 000"
+  },
+  {
+    "name": "Пошлая Молли",
+    "cat": "rock",
+    "base": 3000000,
+    "img": "https://i1.sndcdn.com/artworks-n3QKxOrdSvyGDxAc-h47MPg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "840 000",
+    "scPlays": "6 300 000"
+  },
+  {
+    "name": "Дора",
+    "cat": "rock",
+    "base": 2300000,
+    "img": "https://i1.sndcdn.com/artworks-XlE2r1WzpWZzY9yG-v4yoBA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "644 000",
+    "scPlays": "4 830 000"
+  },
+  {
+    "name": "Кино",
+    "cat": "rock",
+    "base": 4600000,
+    "img": "https://i1.sndcdn.com/artworks-000229669751-4qb14s-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 288 000",
+    "scPlays": "9 660 000"
+  },
+  {
+    "name": "Король и Шут",
+    "cat": "rock",
+    "base": 4300000,
+    "img": "https://i1.sndcdn.com/artworks-000021641855-1jp2f0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 204 000",
+    "scPlays": "9 030 000"
+  },
+  {
+    "name": "Дайте танк (!)",
+    "cat": "rock",
+    "base": 2500000,
+    "img": "https://i1.sndcdn.com/artworks-GWgxbj70HFCGAQiz-h8TOlw-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "700 000",
+    "scPlays": "5 250 000"
+  },
+  {
+    "name": "Nirvana",
+    "cat": "rock",
+    "base": 34000000,
+    "img": "https://i1.sndcdn.com/artworks-WsdNvGzuD3jl-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "9 520 000",
+    "scPlays": "71 400 000"
+  },
+  {
+    "name": "Linkin Park",
+    "cat": "rock",
+    "base": 42000000,
+    "img": "https://i1.sndcdn.com/artworks-uJz91H55DhS5-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "11 760 000",
+    "scPlays": "88 200 000"
+  },
+  {
+    "name": "ssshhhiiittt!",
+    "cat": "rock",
+    "base": 1900000,
+    "img": "https://i1.sndcdn.com/artworks-qN7bYxs6aTk1rIMn-5vuB6Q-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "532 000",
+    "scPlays": "3 990 000"
+  },
+  {
+    "name": "kizaru",
+    "cat": "legends",
+    "base": 4200000,
+    "img": "https://i1.sndcdn.com/artworks-9lWpgBWpgGtLtso1-4VJjxA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 176 000",
+    "scPlays": "8 820 000"
+  },
+  {
+    "name": "Deftones",
+    "cat": "rock",
+    "base": 15000000,
+    "img": "https://i1.sndcdn.com/artworks-Ih6nj8LlbCCD-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "4 200 000",
+    "scPlays": "31 500 000"
+  },
+  {
+    "name": "Big Baby Tape",
+    "cat": "legends",
+    "base": 4000000,
+    "img": "https://i1.sndcdn.com/artworks-3zhEsMtPPv83O5hM-N4PYDg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 120 000",
+    "scPlays": "8 400 000"
+  },
+  {
+    "name": "Rammstein",
+    "cat": "rock",
+    "base": 17000000,
+    "img": "https://a1.sndcdn.com/images/default_avatar_large.png",
+    "trackCount": 35,
+    "scFollowers": "4 760 000",
+    "scPlays": "35 700 000"
+  },
+  {
+    "name": "PHARAOH",
+    "cat": "legends",
+    "base": 2800000,
+    "img": "https://i1.sndcdn.com/artworks-000570471113-4m3adt-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "784 000",
+    "scPlays": "5 880 000"
+  },
+  {
+    "name": "MACAN",
+    "cat": "legends",
+    "base": 4800000,
+    "img": "https://i1.sndcdn.com/artworks-Q26iC7PXdf4ghJ9B-pJN6hg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 344 000",
+    "scPlays": "10 080 000"
+  },
+  {
+    "name": "Boulevard Depo",
+    "cat": "legends",
+    "base": 2200000,
+    "img": "https://i1.sndcdn.com/artworks-f2ywWgsyWsuVlQR4-Pf6iqQ-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "616 000",
+    "scPlays": "4 620 000"
+  },
+  {
+    "name": "Скриптонит",
+    "cat": "legends",
+    "base": 4300000,
+    "img": "https://i1.sndcdn.com/artworks-z9MqMOTAsE4DacK7-8QLbsA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 204 000",
+    "scPlays": "9 030 000"
+  },
+  {
+    "name": "ЛСП",
+    "cat": "legends",
+    "base": 3300000,
+    "img": "https://i1.sndcdn.com/artworks-2drtgXeVx8NCVEWh-3IajoA-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "924 000",
+    "scPlays": "6 930 000"
+  },
+  {
+    "name": "Miyagi & Эндшпиль",
+    "cat": "legends",
+    "base": 6000000,
+    "img": "https://i1.sndcdn.com/artworks-JfwBcVrd4BBDizOq-pX7fQQ-t500x500.jpg",
+    "trackCount": 36,
+    "scFollowers": "1 680 000",
+    "scPlays": "12 600 000"
+  },
+  {
+    "name": "Oxxxymiron",
+    "cat": "legends",
+    "base": 2600000,
+    "img": "https://i1.sndcdn.com/artworks-000488597448-zwenm6-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "728 000",
+    "scPlays": "5 460 000"
+  },
+  {
+    "name": "MORGENSHTERN",
+    "cat": "legends",
+    "base": 3600000,
+    "img": "https://i1.sndcdn.com/artworks-dYio1kHB0EbDv4CR-1XTapg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 008 000",
+    "scPlays": "7 560 000"
+  },
+  {
+    "name": "Playboi Carti",
+    "cat": "usa",
+    "base": 46000000,
+    "img": "https://i1.sndcdn.com/artworks-000217724759-2g2j7z-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "12 880 000",
+    "scPlays": "96 600 000"
+  },
+  {
+    "name": "Travis Scott",
+    "cat": "usa",
+    "base": 65000000,
+    "img": "https://i1.sndcdn.com/artworks-000223014649-ofuim8-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "18 200 000",
+    "scPlays": "136 500 000"
+  },
+  {
+    "name": "Баста",
+    "cat": "legends",
+    "base": 5200000,
+    "img": "https://i1.sndcdn.com/artworks-rK3zytIUgWUccplA-XRpGIg-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "1 456 000",
+    "scPlays": "10 920 000"
+  },
+  {
+    "name": "Ken Carson",
+    "cat": "usa",
+    "base": 13000000,
+    "img": "https://i1.sndcdn.com/artworks-rT0Eo63iDQEa-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "3 640 000",
+    "scPlays": "27 300 000"
+  },
+  {
+    "name": "Kanye West",
+    "cat": "usa",
+    "base": 59000000,
+    "img": "https://i1.sndcdn.com/artworks-000401422227-q9t0ac-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "16 520 000",
+    "scPlays": "123 900 000"
+  },
+  {
+    "name": "Destroy Lonely",
+    "cat": "usa",
+    "base": 9000000,
+    "img": "https://i1.sndcdn.com/artworks-symRbKwfTVztMXUY-xXGg3w-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "2 520 000",
+    "scPlays": "18 900 000"
+  },
+  {
+    "name": "Yeat",
+    "cat": "usa",
+    "base": 19000000,
+    "img": "https://i1.sndcdn.com/artworks-tWKVLSE6bajlmKrE-wtYW1A-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "5 320 000",
+    "scPlays": "39 900 000"
+  },
+  {
+    "name": "Drake",
+    "cat": "usa",
+    "base": 79000000,
+    "img": "https://i1.sndcdn.com/artworks-qvcU1KEhFrJj-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "22 120 000",
+    "scPlays": "165 900 000"
+  },
+  {
+    "name": "21 Savage",
+    "cat": "usa",
+    "base": 50000000,
+    "img": "https://i1.sndcdn.com/artworks-LV5c78jm0x3gC59N-CXbjgQ-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "14 000 000",
+    "scPlays": "105 000 000"
+  },
+  {
+    "name": "Kendrick Lamar",
+    "cat": "usa",
+    "base": 63000000,
+    "img": "https://i1.sndcdn.com/artworks-mHpJhHbs0RQ6-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "17 640 000",
+    "scPlays": "132 300 000"
+  },
+  {
+    "name": "The Weeknd",
+    "cat": "usa",
+    "base": 110000000,
+    "img": "https://i1.sndcdn.com/artworks-000083323922-cgdk8e-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "30 800 000",
+    "scPlays": "231 000 000"
+  },
+  {
+    "name": "Metro Boomin",
+    "cat": "usa",
+    "base": 49000000,
+    "img": "https://i1.sndcdn.com/artworks-000141123003-buppou-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "13 720 000",
+    "scPlays": "102 900 000"
+  },
+  {
+    "name": "Lil Uzi Vert",
+    "cat": "usa",
+    "base": 35000000,
+    "img": "https://i1.sndcdn.com/artworks-Lfxtiy00BxmDH7yy-6iMPxw-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "9 800 000",
+    "scPlays": "73 500 000"
+  },
+  {
+    "name": "Juice WRLD",
+    "cat": "usa",
+    "base": 33000000,
+    "img": "https://i1.sndcdn.com/artworks-000607413409-8kknp0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "9 240 000",
+    "scPlays": "69 300 000"
+  },
+  {
+    "name": "XXXTENTACION",
+    "cat": "usa",
+    "base": 37000000,
+    "img": "https://i1.sndcdn.com/artworks-tpbaG3n6Av2H-0-t500x500.jpg",
+    "trackCount": 35,
+    "scFollowers": "10 360 000",
+    "scPlays": "77 700 000"
+  }
+]

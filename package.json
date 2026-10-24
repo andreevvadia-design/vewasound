@@ -1,0 +1,19 @@
+{
+  "name": "vewasound",
+  "version": "1.0.0",
+  "description": "Minimalist dark-themed music streaming web client and Telegram Mini App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "author": "andreevvadia-design",
+  "license": "MIT",
+  "homepage": "https://github.com/andreevvadia-design/vewasound",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "soundcloud-scraper": "^5.0.3"
+  }
+}
