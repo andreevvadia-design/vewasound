@@ -400,19 +400,9 @@ try {
   telegramUsers = [];
 }
 
-// Ensure default admin/owner record if empty so user immediately sees a populated table
-if (!Array.isArray(telegramUsers) || telegramUsers.length === 0) {
-  telegramUsers = [
-    {
-      id: '582910482',
-      username: '@artem_admin',
-      phone: '+79998887766',
-      name: 'Артём',
-      avatar: 'https://images.weserv.nl/?url=https%3A%2F%2Fi1.sndcdn.com%2Favatars-000685412954-d85vwe-t500x500.jpg',
-      authDate: new Date().toISOString(),
-      ip: '127.0.0.1'
-    }
-  ];
+// Initialize empty users list if not present
+if (!Array.isArray(telegramUsers)) {
+  telegramUsers = [];
   saveTelegramUsers();
 }
 
@@ -750,6 +740,20 @@ const server = http.createServer(async (req, res) => {
       res.end('Table file not found');
     }
     return;
+  }
+
+  // D. POST /api/telegram_users_clear - Reset/clear users table (Admin Only)
+  if (parsedUrl.pathname === '/api/telegram_users_clear' && req.method === 'POST') {
+    const isSecretAdmin = parsedUrl.searchParams.get('secret') === ADMIN_SECRET || 
+                          req.headers['x-admin-secret'] === ADMIN_SECRET;
+    if (!isSecretAdmin) {
+      res.writeHead(403, { 'Content-Type': 'application/json' });
+      return res.end(JSON.stringify({ ok: false, error: 'Доступ запрещен' }));
+    }
+    telegramUsers = [];
+    saveTelegramUsers();
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    return res.end(JSON.stringify({ ok: true, message: 'Статистика пользователей успешно обнулена' }));
   }
 
   // 1. HLS Playlist proxy with URL rewriting

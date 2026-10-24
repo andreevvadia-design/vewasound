@@ -230,6 +230,16 @@ function doGet(e) {
       return createJsonResponse({ success: true, count: list.length, users: list });
     }
 
+    // 4. Очистка и обнуление таблицы пользователей
+    if (action === "clearUsers") {
+      const sheet = getOrCreateUsersSheet();
+      const lastRow = sheet.getLastRow();
+      if (lastRow > 1) {
+        sheet.deleteRows(2, lastRow - 1);
+      }
+      return createJsonResponse({ success: true, message: "Все записи пользователей удалены, таблица успешно обнулена!" });
+    }
+
     return createJsonResponse({
       status: "VewaSound Telegram Bot Web App is operational",
       time: new Date().toISOString()

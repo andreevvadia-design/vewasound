@@ -2810,6 +2810,25 @@
       window.open('/api/telegram_users_export?secret=' + encodeURIComponent(adminToken), '_blank');
     }
 
+    async function clearAdminUsersTable() {
+      if (!confirm('Вы уверены, что хотите обнулить базу пользователей? Все локальные записи будут очищены.')) return;
+      try {
+        const res = await fetch('/api/telegram_users_clear', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ secret: adminToken })
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          alert('✓ База пользователей успешно обнулена!');
+        } else {
+          alert('Ошибка: ' + (data.error || 'не удалось обнулить'));
+        }
+      } catch (e) {
+        alert('Ошибка связи с сервером');
+      }
+    }
+
         function initAudioEngine() {
       audioEl.volume = currentVolume;
 
@@ -3700,6 +3719,9 @@
           </a>
           <button onclick="downloadAdminCsvTable()" class="w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
             <span>📥 Скачать резервную копию базы (CSV / Excel)</span>
+          </button>
+          <button onclick="clearAdminUsersTable()" class="w-full py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/25 text-red-400 hover:text-red-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+            <span>🗑️ Обнулить базу пользователей</span>
           </button>
         </div>
       </div>
