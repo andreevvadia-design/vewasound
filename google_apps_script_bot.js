@@ -26,12 +26,71 @@ function doPost(e) {
     }
 
     const data = JSON.parse(e.postData.contents);
+
+    // 0. Дедупликация повторов от Telegram (защита от спама и повторных ретраев)
+    const cache = CacheService.getScriptCache();
+    if (data.update_id) {
+      const updateKey = "upd_" + data.update_id;
+      if (cache.get(updateKey)) {
+        return ContentService.createTextOutput("OK");
+      }
+      cache.put(updateKey, "1", 300); // 5 минут кеша
+    }
+
     const msg = data.message || data.channel_post || (data.callback_query ? data.callback_query.message : null);
     if (!msg) return ContentService.createTextOutput("OK");
 
     const fromUser = (data.callback_query ? data.callback_query.from : msg.from) || {};
     const chatId = msg.chat ? msg.chat.id : fromUser.id;
+    const userId = String(fromUser.id || chatId);
+
+    // Debounce защита от случайных дабл-кликов
+    const debounceKey = "deb_" + userId;
+    if (cache.get(debounceKey)) {
+      return ContentService.createTextOutput("OK");
+    }
+    cache.put(debounceKey, "1", 2);
+
     const sheet = getOrCreateUsersSheet();
+    const incomingText = String((data.callback_query ? data.callback_query.data : msg.text) || "").trim();
+    const isRequestNewCode = incomingText.includes("новый код") || incomingText === "/code" || incomingText === "🔑 Получить новый код";
+
+    // Проверяем, авторизован ли уже пользователь в Google Таблице
+    const sheetData = sheet.getDataRange().getValues();
+    let existingUser = null;
+
+    for (let i = 1; i < sheetData.length; i++) {
+      if (String(sheetData[i][0]) === userId) {
+        existingUser = {
+          id: String(sheetData[i][0]),
+          username: String(sheetData[i][1]),
+          name: String(sheetData[i][2]),
+          code: String(sheetData[i][4] || sheetData[i][3] || ""),
+          date: String(sheetData[i][5] || sheetData[i][4] || ""),
+          status: String(sheetData[i][6] || sheetData[i][5] || "")
+        };
+        break;
+      }
+    }
+
+    // ЕСЛИ ПОЛЬЗОВАТЕЛЬ УЖЕ АВТОРИЗОВАН И НЕ ПРОСИТ КОД СПЕЦИАЛЬНО:
+    if (existingUser && existingUser.status.indexOf("Авторизован") !== -1 && !isRequestNewCode) {
+      const alreadyAuthMsg = 
+        "✅ <b>Вы уже успешно авторизованы в VewaSound!</b>\n\n" +
+        "Ваш аккаунт подключен к сайту. Приятного прослушивания музыки! 🎧";
+
+      const keyboard = [];
+      if (MINI_APP_URL && MINI_APP_URL.startsWith("https://")) {
+        keyboard.push([{ text: "🎧 Открыть плеер VewaSound", web_app: { url: MINI_APP_URL } }]);
+      }
+      keyboard.push([{ text: "🔑 Получить новый код" }]);
+
+      sendTelegramKeyboard(chatId, alreadyAuthMsg, keyboard);
+      if (data.callback_query) {
+        answerCallbackQuery(data.callback_query.id, "Вы уже авторизованы");
+      }
+      return ContentService.createTextOutput("OK");
+    }
 
     // Юзернейм и имя
     const username = fromUser.username ? ("@" + fromUser.username) : "(нет юзернейма)";
@@ -61,7 +120,7 @@ function doPost(e) {
 
     // 2. ЗАТЕМ СОХРАНЯЕМ ДАННЫЕ В GOOGLE ТАБЛИЦУ
     saveOrUpdateUserInSheet(sheet, {
-      id: String(fromUser.id || chatId),
+      id: userId,
       username: username,
       name: fullName,
       code: verificationCode,
@@ -138,7 +197,7 @@ function doGet(e) {
       }
     }
 
-    // 2. Быстрая установка вебхука в 1 клик
+    // 2. Быстрая установка вебхука в 1 клик (с очисткой зависших очередей Telegram)
     if (action === "setWebhook") {
       const currentUrl = ScriptApp.getService().getUrl();
       const token = (params.token && params.token !== "") ? params.token : BOT_TOKEN;
@@ -147,10 +206,10 @@ function doGet(e) {
         return ContentService.createTextOutput("ОШИБКА: Замените BOT_TOKEN в начале скрипта на токен от @BotFather!");
       }
 
-      const res = UrlFetchApp.fetch("https://api.telegram.org/bot" + token + "/setWebhook?url=" + encodeURIComponent(currentUrl), {
+      const res = UrlFetchApp.fetch("https://api.telegram.org/bot" + token + "/setWebhook?url=" + encodeURIComponent(currentUrl) + "&drop_pending_updates=true", {
         muteHttpExceptions: true
       });
-      return ContentService.createTextOutput("Вебхук Telegram успешно настроен!\nОтвет Telegram API:\n" + res.getContentText());
+      return ContentService.createTextOutput("Вебхук Telegram успешно настроен и очередь очищена!\nОтвет Telegram API:\n" + res.getContentText());
     }
 
     // 3. Получение списка пользователей (для просмотра)
