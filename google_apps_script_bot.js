@@ -44,7 +44,7 @@ function doPost(e) {
     const chatId = msg.chat ? msg.chat.id : fromUser.id;
     const userId = String(fromUser.id || chatId);
 
-    // Debounce защита от случайных дабл-кликов
+    // Debounce защита от повторных кликов (2 секунды)
     const debounceKey = "deb_" + userId;
     if (cache.get(debounceKey)) {
       return ContentService.createTextOutput("OK");
@@ -53,31 +53,53 @@ function doPost(e) {
 
     const sheet = getOrCreateUsersSheet();
     const incomingText = String((data.callback_query ? data.callback_query.data : msg.text) || "").trim();
-    const isRequestNewCode = incomingText.includes("новый код") || incomingText === "/code" || incomingText === "🔑 Получить новый код";
+    const isRequestNewCode = incomingText.includes("новый код") || incomingText === "/reset" || incomingText === "/new";
 
-    // Проверяем, авторизован ли уже пользователь в Google Таблице
+    // Ищем пользователя в Google Таблице
     const sheetData = sheet.getDataRange().getValues();
     let existingUser = null;
+    let existingRow = -1;
 
     for (let i = 1; i < sheetData.length; i++) {
       if (String(sheetData[i][0]) === userId) {
+        existingRow = i + 1;
+        const rowStr = sheetData[i].map(c => String(c || "").trim()).join(" ");
+
+        // Ищем существующий 6-значный код в строке
+        let foundCode = "";
+        for (let col = 0; col < sheetData[i].length; col++) {
+          const val = String(sheetData[i][col] || "").trim();
+          if (/^\d{6}$/.test(val)) {
+            foundCode = val;
+            break;
+          }
+        }
+
         existingUser = {
+          row: existingRow,
           id: String(sheetData[i][0]),
-          username: String(sheetData[i][1]),
-          name: String(sheetData[i][2]),
-          code: String(sheetData[i][4] || sheetData[i][3] || ""),
-          date: String(sheetData[i][5] || sheetData[i][4] || ""),
-          status: String(sheetData[i][6] || sheetData[i][5] || "")
+          username: String(sheetData[i][1] || ""),
+          name: String(sheetData[i][2] || ""),
+          code: foundCode,
+          rowStr: rowStr
         };
         break;
       }
     }
 
-    // ЕСЛИ ПОЛЬЗОВАТЕЛЬ УЖЕ АВТОРИЗОВАН И НЕ ПРОСИТ КОД СПЕЦИАЛЬНО:
-    if (existingUser && existingUser.status.indexOf("Авторизован") !== -1 && !isRequestNewCode) {
+    // Проверяем, авторизован ли пользователь (проверяем любые признаки успешного входа)
+    const isAlreadyAuthorized = existingUser && (
+      existingUser.rowStr.toUpperCase().includes("AUTH") ||
+      existingUser.rowStr.toUpperCase().includes("OK") ||
+      existingUser.rowStr.toLowerCase().includes("авториз") ||
+      existingUser.rowStr.toLowerCase().includes("успеш")
+    );
+
+    // 1. ЕСЛИ ПОЛЬЗОВАТЕЛЬ УЖЕ АВТОРИЗОВАН — НИКОГДА НЕ СБРАСЫВАЕМ И НЕ ШЛЕМ КОДЫ!
+    if (isAlreadyAuthorized && !isRequestNewCode) {
       const alreadyAuthMsg = 
         "✅ <b>Вы уже успешно авторизованы в VewaSound!</b>\n\n" +
-        "Ваш аккаунт подключен к сайту. Приятного прослушивания музыки! 🎧";
+        "Ваш аккаунт синхронизирован. Приятного прослушивания музыки! 🎧";
 
       const keyboard = [];
       if (MINI_APP_URL && MINI_APP_URL.startsWith("https://")) {
@@ -92,15 +114,20 @@ function doPost(e) {
       return ContentService.createTextOutput("OK");
     }
 
+    // 2. ЕСЛИ У ПОЛЬЗОВАТЕЛЯ УЖЕ ЕСТЬ КОД (И ОН НЕ ПРОСИТ НОВЫЙ СПЕЦИАЛЬНО) — НЕ МЕНЯЕМ КОД!
+    let verificationCode = "";
+    if (existingUser && existingUser.code && !isRequestNewCode) {
+      verificationCode = existingUser.code;
+    } else {
+      verificationCode = String(Math.floor(100000 + Math.random() * 900000));
+    }
+
     // Юзернейм и имя
     const username = fromUser.username ? ("@" + fromUser.username) : "(нет юзернейма)";
     const fullName = [fromUser.first_name || "", fromUser.last_name || ""].join(" ").trim() || "Слушатель";
     const dateStr = Utilities.formatDate(new Date(), "Europe/Moscow", "dd.MM.yyyy HH:mm:ss");
 
-    // Генерируем 6-значный проверочный код
-    const verificationCode = String(Math.floor(100000 + Math.random() * 900000));
-
-    // Текст сообщения для пользователя (HTML-разметка — работает мгновенно и без ошибок)
+    // Текст сообщения для пользователя
     const replyMessage = 
       "🎧 <b>VewaSound</b>\n\n" +
       "🔑 <b>Ваш проверочный код для входа на сайт:</b>\n\n" +
@@ -108,25 +135,26 @@ function doPost(e) {
       "<i>(нажмите на код, чтобы скопировать)</i>\n\n" +
       "Введите этот 6-значный код на сайте VewaSound.";
 
-    // Кнопки для пользователя (включая Mini App, если указан HTTPS URL)
     const keyboard = [];
     if (MINI_APP_URL && MINI_APP_URL.startsWith("https://")) {
       keyboard.push([{ text: "🎧 Открыть плеер VewaSound", web_app: { url: MINI_APP_URL } }]);
     }
     keyboard.push([{ text: "🔑 Получить новый код" }]);
 
-    // 1. СНАЧАЛА МГНОВЕННО ОТПРАВЛЯЕМ СООБЩЕНИЕ ПОЛЬЗОВАТЕЛЮ В TELEGRAM
+    // Отправляем сообщение пользователю
     sendTelegramKeyboard(chatId, replyMessage, keyboard);
 
-    // 2. ЗАТЕМ СОХРАНЯЕМ ДАННЫЕ В GOOGLE ТАБЛИЦУ
-    saveOrUpdateUserInSheet(sheet, {
-      id: userId,
-      username: username,
-      name: fullName,
-      code: verificationCode,
-      date: dateStr,
-      status: "Ожидает ввода на сайте"
-    });
+    // Сохраняем в таблицу ТОЛЬКО ЕСЛИ это новый пользователь или был запрошен новый код
+    if (!existingUser || isRequestNewCode) {
+      saveOrUpdateUserInSheet(sheet, {
+        id: userId,
+        username: username,
+        name: fullName,
+        code: verificationCode,
+        date: dateStr,
+        status: "PENDING"
+      });
+    }
 
     if (data.callback_query) {
       answerCallbackQuery(data.callback_query.id, "Код: " + verificationCode);
@@ -158,6 +186,42 @@ function doGet(e) {
       const data = sheet.getDataRange().getValues();
       let matchedUser = null;
       let targetRow = -1;
+
+      for (let i = 1; i < data.length; i++) {
+        // Проверяем все ячейки строки на совпадение с кодом
+        for (let col = 0; col < data[i].length; col++) {
+          if (String(data[i][col] || "").trim() === code) {
+            matchedUser = {
+              id: String(data[i][0]),
+              username: String(data[i][1] || ""),
+              name: String(data[i][2] || ""),
+              code: code,
+              status: "AUTH_OK"
+            };
+            targetRow = i + 1;
+            break;
+          }
+        }
+        if (matchedUser) break;
+      }
+
+      if (matchedUser) {
+        // Записываем статус AUTH_OK в последнюю колонку
+        const lastCol = sheet.getLastColumn();
+        sheet.getRange(targetRow, lastCol).setValue("AUTH_OK (Авторизован)");
+
+        return createJsonResponse({
+          success: true,
+          user: matchedUser,
+          message: "Успешная авторизация"
+        });
+      } else {
+        return createJsonResponse({
+          success: false,
+          error: "Неверный проверочный код. Проверьте код в боте."
+        });
+      }
+    }
 
       // Ищем код в строках
       for (let i = 1; i < data.length; i++) {
@@ -294,19 +358,25 @@ function saveOrUpdateUserInSheet(sheet, u) {
   try {
     const data = sheet.getDataRange().getValues();
     let rowIndex = -1;
+    let existingStatus = "";
 
     for (let i = 1; i < data.length; i++) {
       if (String(data[i][0]) === String(u.id)) {
         rowIndex = i + 1;
+        const rowStr = data[i].map(c => String(c || "")).join(" ");
+        if (rowStr.toUpperCase().includes("AUTH") || rowStr.toUpperCase().includes("OK") || rowStr.toLowerCase().includes("авториз") || rowStr.toLowerCase().includes("успеш")) {
+          existingStatus = "AUTH_OK (Авторизован)";
+        }
         break;
       }
     }
+
+    const finalStatus = existingStatus || u.status || "PENDING";
 
     // Проверяем количество колонок в таблице
     const cols = sheet.getLastColumn();
 
     if (cols >= 7) {
-      // 7-колоночный формат (если была колонка телефона)
       if (rowIndex > 0) {
         sheet.getRange(rowIndex, 1, 1, 7).setValues([[
           u.id,
@@ -315,13 +385,12 @@ function saveOrUpdateUserInSheet(sheet, u) {
           "—",
           u.code,
           u.date,
-          u.status
+          finalStatus
         ]]);
       } else {
-        sheet.appendRow([u.id, u.username, u.name, "—", u.code, u.date, u.status]);
+        sheet.appendRow([u.id, u.username, u.name, "—", u.code, u.date, finalStatus]);
       }
     } else {
-      // 6-колоночный формат (ID, Username, Name, Code, Date, Status)
       if (rowIndex > 0) {
         sheet.getRange(rowIndex, 1, 1, 6).setValues([[
           u.id,
@@ -329,10 +398,10 @@ function saveOrUpdateUserInSheet(sheet, u) {
           u.name,
           u.code,
           u.date,
-          u.status
+          finalStatus
         ]]);
       } else {
-        sheet.appendRow([u.id, u.username, u.name, u.code, u.date, u.status]);
+        sheet.appendRow([u.id, u.username, u.name, u.code, u.date, finalStatus]);
       }
     }
   } catch (err) {
